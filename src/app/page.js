@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import FilterButton from "./filter/FilterButton";
 import { nft } from "../data/nft";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -15,7 +16,8 @@ export default function Home() {
       </div>
       <div className="w-full flex items-center px-4 ">
         {nft.map((item) => (
-          <div
+          <Link
+            href={`/nft/${item.id}`}
             className="w-full mx-auto flex items-center justify-center h-full max-h-[270px] rounded-full mt-10"
             key={item.id}
           >
@@ -27,7 +29,7 @@ export default function Home() {
               quality={100}
               className="rounded-3xl w-full shadow-md "
             />
-          </div>
+          </Link>
         ))}
       </div>
     </div>
