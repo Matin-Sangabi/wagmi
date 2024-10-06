@@ -5,6 +5,8 @@ import { headers } from "next/headers";
 import WalletContextProvider from "../context/walletProvider";
 import Header from "./header/header";
 import Bottom from "./bottomNavigation/bottom";
+import  { Toaster } from 'react-hot-toast';
+
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -29,6 +31,7 @@ export default function RootLayout({ children }) {
             </div>
           </div>
         </WalletContextProvider>
+      <Toaster />
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { nft } from "../../../data/nft";
 import { Icon } from "@iconify/react";
+import MintButton from "./mintButton";
 
 export async function generateMetadata({ params }) {
   return { title: `Nft - ${params.id}` };
@@ -34,7 +35,10 @@ export default function Page({ params }) {
           <span className="text-6xl  -mt-1">{nftData?.price}</span>
         </span>
       </div>
-      <button className="w-full py-3 flex items-center justify-center bg-gradient text-white rounded-2xl">Mint</button>
+      <div className="my-4 flex flex-col gap-y-2 w-full">
+        <MintButton />
+      </div>
+      
     </div>
   );
 }

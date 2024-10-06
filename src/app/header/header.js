@@ -6,10 +6,9 @@ import { useParams } from "next/navigation";
 import React from "react";
 import { useAccount } from "wagmi";
 import ShowBalance from "./showBalance";
+import { compactHash } from "../../utils/hash";
 
-const compactHash = (hash) => {
-  return hash.slice(0, 2) + "..." + hash.slice(-2);
-};
+
 
 export default function Header() {
   const { open } = useAppKit();
