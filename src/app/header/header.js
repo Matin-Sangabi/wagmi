@@ -4,27 +4,26 @@ import { Icon } from "@iconify/react";
 import { useAppKit } from "@reown/appkit/react";
 import { useParams } from "next/navigation";
 import React from "react";
-import { useAccount } from "wagmi";
+import { useAccount, useAccountEffect } from "wagmi";
 import ShowBalance from "./showBalance";
 import { compactHash } from "../../utils/hash";
-
-
 
 export default function Header() {
   const { open } = useAppKit();
   const searchParams = useParams();
 
-  const { address, isReconnecting, chain, isConnecting } = useAccount();
+  const { address, isReconnecting } = useAccount();
 
-  React.useEffect(() => {
-    if (isReconnecting) {
-      if (address && chain) {
-        if (chain.name === "Ethereum") {
+  useAccountEffect({
+    onConnect(data) {
+      // if(data)
+      if (data?.chainId === 1) {
+        setTimeout(() => {
           open({ view: "Networks" });
-        }
+        }, 1000);
       }
-    }
-  }, [open, isReconnecting, address, chain, isConnecting]);
+    },
+  });
 
   return (
     <header className="w-full flex items-center justify-between">
